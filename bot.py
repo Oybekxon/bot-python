@@ -8,7 +8,16 @@ API_TOKEN = "8535106559:AAGoR_Od2xnMYyMaSMVU0HekCUPXZG9IDqE"
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
+async def on_start(message: types.Message):
+    await message.reply("Hello, welcome to the bot!")
 
+dp.register_message_handler(on_start, Command("start"))
+
+async def handler(request):
+    # aiogram botning ishga tushurilishi
+    await bot.start_polling()
+
+    return Response(status_code=200)
 # --- START tugmasi ---
 start_btn = ReplyKeyboardMarkup(
     keyboard=[
